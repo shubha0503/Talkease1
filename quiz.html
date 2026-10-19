@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="light-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkEase Quiz - Language Learning App</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-language"></i> TalkEase
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index.html#chat"><i class="fas fa-comment-dots"></i> Chatbot</a></li>
+                    <li><a href="index.html#lesson"><i class="fas fa-book"></i> Lesson Generator</a></li>
+                    <li><a href="quiz.html" class="active"><i class="fas fa-question-circle"></i> Quiz</a></li>
+                    <li><a href="index.html#progress"><i class="fas fa-trophy"></i> Progress</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="quiz" class="section active">
+            <h2><i class="fas fa-question-circle"></i> Language Quiz</h2>
+            
+            <div class="quiz-intro" id="quiz-intro">
+                <h3>Test Your Knowledge</h3>
+                <p>This quiz is based on your latest lesson. Answer the questions to test your understanding.</p>
+                <div class="quiz-info">
+                    <div class="quiz-info-item">
+                        <i class="fas fa-book"></i>
+                        <span id="quiz-topic">Topic: Loading...</span>
+                    </div>
+                    <div class="quiz-info-item">
+                        <i class="fas fa-globe"></i>
+                        <span id="quiz-language">Language: Loading...</span>
+                    </div>
+                    <div class="quiz-info-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span id="quiz-question-count">Questions: 0</span>
+                    </div>
+                </div>
+                <button id="start-quiz-btn" class="btn-primary">
+                    <span class="btn-text">Start Quiz</span>
+                    <span class="spinner hidden"></span>
+                </button>
+            </div>
+            
+            <div id="quiz-container" class="quiz-container hidden">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress" id="quiz-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="current-question">0</span>/<span id="total-questions">0</span>
+                        </div>
+                    </div>
+                    <div class="quiz-timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="quiz-timer-display">00:00</span>
+                    </div>
+                </div>
+                
+                <div id="question-container" class="question-container">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="prev-question-btn" class="nav-btn" disabled>
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button id="next-question-btn" class="nav-btn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="submit-quiz-btn" class="submit-btn hidden">
+                        Submit Quiz
+                    </button>
+                </div>
+            </div>
+            
+            <div id="quiz-results" class="quiz-results hidden">
+                <div class="results-header">
+                    <h3>Quiz Results</h3>
+                    <div class="results-score">
+                        <div class="score-circle">
+                            <span id="result-percentage">0%</span>
+                        </div>
+                        <p>You got <span id="correct-answers">0</span> out of <span id="total-questions-result">0</span> correct</p>
+                    </div>
+                </div>
+                
+                <div id="results-breakdown" class="results-breakdown">
+                    <!-- Results breakdown will be inserted here -->
+                </div>
+                
+                <div class="results-actions">
+                    <button id="review-answers-btn" class="btn-secondary">
+                        <i class="fas fa-search"></i> Review Answers
+                    </button>
+                    <button id="retry-quiz-btn" class="btn-secondary">
+                        <i class="fas fa-redo"></i> Retry Quiz
+                    </button>
+                    <button id="new-quiz-btn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Take New Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TalkEase Language Learning. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <audio id="message-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3"></audio>
+    <audio id="notification-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-notification-951.mp3"></audio>
+    <audio id="correct-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrong-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-buzz-950.mp3"></audio>
+    <audio id="complete-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
+
+    <script src="static/script.js"></script>
+    <script src="static/quiz.js"></script>
+</body>
+</html>
